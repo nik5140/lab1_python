@@ -1,0 +1,89 @@
+class Point:
+    def __init__(self, x:int, y: int)-> None:
+        self._x = x
+        self._y = y
+
+    def move(self, delta_x:int=0, delta_y:int=0):
+        self._x += delta_x
+        self._y += delta_y
+
+    def __str__ (self)-> str:
+        return f"Point: x={self._x}, y={self._y}"
+
+    @property
+    def x(self)->int:
+        return self._x
+
+    @x.setter
+    def x(self, value: int)-> None:
+        if value <0:
+            raise ValueError()
+        self._x = value
+
+class Person:
+    def __init__(self, name:str) -> None:
+        self.name = name
+
+    def move(self)-> None:
+        print("MOVE!!!")
+
+class Student(Person):
+    def move(self)-> None:
+        print("MOVE!")
+        return super().move
+
+
+point = Point(1,2)
+point._x
+
+
+def func():
+    while True:
+        a = input ("Enter something ")
+
+        try:
+            b = int(a)
+            return b
+            break
+        except ValueError:
+            print("!!!!")
+            continue
+
+class Line:
+    def __init__(self, start:Point, end:Point)->None:
+        self.start = start
+        self.end = end
+
+    def move(self, delta_x, int=0, delta_y: int=0)-> None:
+        self.start.move(delta_x, delta_y)
+        self.end.move(delta_x, delta_y)
+
+    def __str__(self)-> str:
+        return f"Line: start={self.start}, end={self.end}"
+
+
+
+def main():
+    print ("hello world")
+
+    start = Point (1,6)
+    end = Point(1, 8)
+    line1 = Line(start, end)
+
+    print (line1)
+    line1.move(3,3)
+    print(line1)
+
+    #a = func()
+    person = Student("Vasya")
+    person.move()
+    point.x = 3
+    print(point.x)
+
+ #   print("Hello there "+str(a))
+
+
+if __name__ == "__main__":
+    main()
+
+
