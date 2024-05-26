@@ -1,0 +1,43 @@
+import redis
+r = redis.Redis(host='127.0.0.1',port=6379)
+
+dillers = {"dillers":"PAO Zaletov"}
+
+car1 = {
+    "manufacturer":"toyota",
+    "model":"celica",
+    "year":2005,
+    "cost":1500000,
+    "diller":dillers["dillers"]
+}
+
+car2 = {
+    "manufacturer":"toyota",
+    "model":"rav4",
+    "year":2005,
+    "cost":1500000,
+    "diller":dillers["dillers"]
+}
+
+car3 = {
+    "manufacturer":"nissan",
+    "model":"quashkai",
+    "year":2013,
+    "cost":1500000,
+    "diller":dillers["dillers"]
+}
+
+
+marketTown = {"MarketTown":"Tomsk"}
+
+r.hmset('car1', car1)
+r.hmset('car2', car2)
+r.hmset('car3', car3)
+r.hmset('dillers',dillers)
+r.hmset('marketTown',marketTown)
+
+print(f'car1: {r.hgetall("car1")}')
+print(f'car2: {r.hgetall("car2")}')
+print(f'car3: {r.hgetall("car2")}')
+print(f'dillers: {r.hgetall("dillers")}')
+print(f'marketTown: {r.hgetall("marketTown")}')
